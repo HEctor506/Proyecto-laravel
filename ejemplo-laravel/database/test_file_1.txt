@@ -1,0 +1,2 @@
+1,'hector','hrugle@uees.edu.ec',NULL,'$2y$10$TvD563lEfRZ1KrJ0fWrkZup7YHjAENvTdfrJIq9mOhLkxVeQ6jRk6',NULL,'2024-10-01 17:40:31','2024-10-01 17:40:31'
+2,'Luisa','luisa@rfrfrrfr',NULL,'$2y$10$LL5dyVEn0GZCprTQfxrQs.6NGSc0cOA154zRqw0DR8foQML4rtsM2',NULL,'2024-10-01 17:42:43','2024-10-01 17:42:43'
