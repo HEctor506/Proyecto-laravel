@@ -50,12 +50,20 @@ class ProyectoController extends Controller
         $data = $request->all();
         $proyecto->update($data);
 
-        return redirect('projects/')->with('success', 'Proyecto actualizada exitosamente');
+        return redirect('projects/')->with('info', 'Proyecto actualizado exitosamente');
     }
 
-    public function destroy(Proyecto $proyecto){
+    // public function destroy(Proyecto $proyecto){
+    //     $proyecto->delete();
+    //     return redirect('projects/')->with('success', 'Proyecto eliminado exitosamente');
+    // }
+    
+    
+    public function destroy($id){
+        $proyecto= Proyecto::find($id); #<-puedo buscar el id del proyecto e eliminarlo
         $proyecto->delete();
-        return redirect('projects/')->with('success', 'Proyecto eliminado exitosamente');
+        return redirect('projects/')
+        ->with('error', 'Proyecto eliminado satisfactoriamente');
     }
     
 }

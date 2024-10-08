@@ -34,7 +34,7 @@
         <div class="col">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Active</a>
+              <a class="nav-link active" aria-current="page" href=" {{ route('proyecto.index') }} ">Gestion de proyectos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>

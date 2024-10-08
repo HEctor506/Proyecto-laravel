@@ -26,4 +26,5 @@ Route::get('/projects/create', [ProyectoController::class, 'create'])->name('pro
 Route::post('/projects', [ProyectoController::class, 'store'])->name('proyecto.store');
 Route::get('/projects/{proyecto}/edit', [ProyectoController::class, 'edit'])->name('proyecto.edit');
 Route::put('/projects/{proyecto}/update', [ProyectoController::class, 'update'])->name('proyecto.update');
-Route::delete('/projects/{proyecto}/destroy', [ProyectoController::class, 'destroy'])->name('proyecto.destroy');
+// Route::delete('/projects/{proyecto}/destroy', [ProyectoController::class, 'destroy'])->name('proyecto.destroy');
+Route::delete('/projects/{id}', [ProyectoController::class, 'destroy'])->name('proyecto.destroy');
