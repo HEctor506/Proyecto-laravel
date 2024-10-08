@@ -19,24 +19,12 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('proyecto.index')}} ">Home</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Dropdown
                     </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                   </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -55,12 +43,6 @@
               <a class="nav-link active" aria-current="page" href="#">Active</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
             </li>
           </ul>
@@ -68,8 +50,9 @@
         <div class="col-5">
           <br/>
           <p class="fs-1">Registro de Proyectos</p>
+          {{-- <h1>Registro de Proyectos</h1> --}}
           <br/>
-          <form action ="{{route('projects')}}" method="post">
+          <form action ="{{route('proyecto.store')}}" method="post">
                 @csrf
                 @method('POST')
             <div class="input-group mb-3">
@@ -81,6 +64,11 @@
               <span class="input-group-text" id="inputGroup-sizing-default">Descripcion</span>
               <input type="text" name="descripcion" id="descripcion" class="form-control" aria-label="Descripción del proyecto" aria-describedby="inputGroup-sizing-lg">
             </div>
+
+            {{-- <div class="input-group mb-3">
+              <span class="input-group-text">Myself</span>
+              <input type="text" name="myself" id="myself" class="form-control">
+            </div> --}}
             <div class="text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>

@@ -23,10 +23,8 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
+                                    <a class="nav-link active" aria-current="page"
+                                        href=" {{ route('proyecto.index') }} ">Home</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -34,12 +32,12 @@
                                         Dropdown
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Mi accion</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href=" {{ route('proyecto.create') }} ">Crear
+                                                Proyecto</a></li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        <li><a class="dropdown-item" href="#">Nothing yet</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
@@ -60,12 +58,6 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Active</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link 2</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" aria-disabled="true">Disabled</a>
@@ -100,6 +92,7 @@
             <div class="col">
             </div>
         </div>
+        <br />
         <div class="row">
             <div class="col">
                 <table class="table table-striped table-hover">
@@ -114,8 +107,14 @@
                     <tbody>
                         @foreach ($proyectos as $proyecto)
                             <tr>
-                                <th><button type="button" class="btn btn-primary btn-sm">Update</button>
-                                    <button type="button" class="btn btn-danger btn-sm">Delete</button></th>
+                                <th>
+                                    <a href="{{ route('proyecto.edit', ['proyecto' => $proyecto]) }}" class="btn btn-primary btn-sm">Update</a>
+                                    <form action=" {{route('proyecto.destroy', ['proyecto'=>$proyecto])}} " method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </th>
                                 <td>{{ $proyecto->titulo }}</td>
                                 <td>{{ $proyecto->descripcion }}</td>
                                 <td>{{ $proyecto->created_at }}</td>

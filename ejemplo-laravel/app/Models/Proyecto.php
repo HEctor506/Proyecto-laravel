@@ -9,7 +9,7 @@ class Proyecto extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['titulo', 'descripcion'];
+    protected $fillable = ['id','titulo', 'descripcion'];
 
     // protected static function boot(){
     //     parent::boot();

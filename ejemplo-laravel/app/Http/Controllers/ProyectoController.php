@@ -8,86 +8,54 @@ use Illuminate\Support\Facades\DB;
 
 class ProyectoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $proyectos = DB::table('proyectos')->get();
-        return view("projects/index", ['proyectos' => $proyectos]); //para que sera esto ????
+        // $proyectos = DB::table('proyectos')->get();
+        $proyectos = Proyecto::all();
+        return view('projects/index', ['proyectos' => $proyectos]); //para que sera esto ????
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        return view("projects/new");
-        //
+        return view("projects.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
-    {   
+    {
         // Crear el proyecto sin validación de datos
         Proyecto::create($request->all());
 
         // Redirigir con un mensaje de éxito
-        return redirect('projects/')
-            ->with('success', 'Proyecto creado satisfactoriamente');
+        return redirect('projects/')->with('success', 'Proyecto creado satisfactoriamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Proyecto $proyecto)
     {
-        //
+        try {
+            // Lógica para manejar el proyecto
+            return view('projects.edit', ['proyecto' => $proyecto]);
+        } catch (\Exception $e) {
+            // Captura la excepción y la envía a la vista como error
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Proyecto $proyecto){
+        $data = $request->all();
+        $proyecto->update($data);
+
+        return redirect('projects/')->with('success', 'Proyecto actualizada exitosamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Proyecto $proyecto){
+        $proyecto->delete();
+        return redirect('projects/')->with('success', 'Proyecto eliminado exitosamente');
     }
+    
 }

@@ -19,9 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource("projects", ProyectoController::class);
+// Route::resource("projects", ProyectoController::class);
 
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/projects/store', [App\Http\Controllers\ProyectoController::class, 'store'])->name('projects');
-// Route::post('/projects', 'ProyectoController@store')->name('projects');
+Route::get('/projects', [ProyectoController::class, 'index'])->name('proyecto.index');
+Route::get('/projects/create', [ProyectoController::class, 'create'])->name('proyecto.create');
+Route::post('/projects', [ProyectoController::class, 'store'])->name('proyecto.store');
+Route::get('/projects/{proyecto}/edit', [ProyectoController::class, 'edit'])->name('proyecto.edit');
+Route::put('/projects/{proyecto}/update', [ProyectoController::class, 'update'])->name('proyecto.update');
+Route::delete('/projects/{proyecto}/destroy', [ProyectoController::class, 'destroy'])->name('proyecto.destroy');
